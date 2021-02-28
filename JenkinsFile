@@ -68,7 +68,16 @@ pipeline{
           sh 'mvn package'
         }
     }
-    
+      stage('collect artifact'){
+     steps{
+     archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+     }
+        post{
+       failure{
+            mail bcc: '', body: 'collect artifact stage fails ', cc: '', from: '', replyTo: '', subject: ' collect to artifactory fails', to: 'divyagowdadivya238@gmail.com'
+        }
+     }
+    }
      
        
       
