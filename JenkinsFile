@@ -79,7 +79,32 @@ pipeline{
      }
     }
      
-       
+          stage('deploy to artifactory')
+     {
+     steps{
+     
+     rtUpload (
+    serverId: 'ARTIFACTORY_SERVER',
+    spec: '''{
+          "files": [
+            {
+              "pattern": "target/*.jar",
+              "target": "art-doc-dev-loc"
+            }
+         ]
+    }''',
+ 
+  
+     )
+     }
+      post{
+       failure{
+            mail bcc: '', body: 'deploy to artifactory stage fails ', cc: '', from: '', replyTo: '', subject: 'deploy to artifactory fails', to: 'divyagowdadivya238@gmail.com'
+        }
+           
+     }
+
+     }
       
   
   }
