@@ -20,7 +20,11 @@ pipeline{
         }
     }
 
-   
+   stage('maven install'){
+        steps{
+          sh 'mvn install'
+        }
+    }
 
 
     stage("build & SonarQube analysis") {
