@@ -123,6 +123,7 @@ pipeline{
         }
         success{
           build.job='check connection'
+          
             mail bcc: '', body: 'ALl stages succesfully done ', cc: '', from: '', replyTo: '', subject: 'pipeline successfully executed', to: 'divyagowdadivya238@gmail.com'
         }
            
