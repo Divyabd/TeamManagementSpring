@@ -97,6 +97,26 @@ pipeline{
   
      )
      }
+     }
+      stage('download from artifactory')
+         {
+            steps{
+     
+                rtDownload (
+                    serverId: 'ARTIFACTORY_SERVER',
+                    spec: '''{
+                    "files": [
+                         {
+                             "pattern": "art-doc-dev-loc/**",
+                             "target": "targetdownload/"
+                        }
+                     ]
+                }''',
+ 
+  
+   
+)
+     }
       post{
        failure{
             mail bcc: '', body: 'deploy to artifactory stage fails ', cc: '', from: '', replyTo: '', subject: 'deploy to artifactory fails', to: 'divyagowdadivya238@gmail.com'
@@ -108,8 +128,8 @@ pipeline{
            
      }
 
-     }
-      
+     
+         } 
   
   }
   }
