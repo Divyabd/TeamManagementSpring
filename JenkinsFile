@@ -122,8 +122,8 @@ pipeline{
             mail bcc: '', body: 'deploy to artifactory stage fails ', cc: '', from: '', replyTo: '', subject: 'deploy to artifactory fails', to: 'divyagowdadivya238@gmail.com'
         }
         success{
-          build.job='check connection'
-          
+     
+           build job: 'check connection'
             mail bcc: '', body: 'ALl stages succesfully done ', cc: '', from: '', replyTo: '', subject: 'pipeline successfully executed', to: 'divyagowdadivya238@gmail.com'
         }
            
